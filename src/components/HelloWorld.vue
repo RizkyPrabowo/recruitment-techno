@@ -1,58 +1,200 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div class="q-pa-md">
+    <q-stepper
+      v-model="step"
+      vertical
+      color="primary"
+      animated
+    >
+      <q-step
+        :name="1"
+        title="Personal Information"
+        icon="form"
+        :done="step > 1"
+      >
+      
+      <q-input
+        ref="name"
+        filled
+        v-model="name"
+        label="Your name"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+      />
+
+      <q-input
+        ref="phone"
+        filled
+        type="number"
+        v-model="phone"
+        label="Number Handphone"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+      />
+
+      <q-input
+        ref="email"
+        filled
+        v-model="email"
+        label="Your Email"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+      />
+
+      <q-input
+        ref="address"
+        filled
+        v-model="address"
+        label="Your Address"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+      />
+
+      <q-toggle v-model="accept" label="I accept the license and terms" />
+
+      <div>
+        <q-btn label="Submit" type="submit" color="primary" />
+        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+      </div>
+
+        <q-stepper-navigation>
+          <q-btn @click="step = 2" color="primary" label="Continue" />
+        </q-stepper-navigation>
+      </q-step>
+
+      <q-step
+        :name="2"
+        title="Educational Background"
+        caption="Optional"
+        icon="create_new_folder"
+        :done="step > 2"
+      >
+        <q-stepper-navigation>
+          <q-btn @click="step = 3" color="primary" label="Continue" />
+          <q-btn flat @click="step = 1" color="primary" label="Back" class="q-ml-sm" />
+        </q-stepper-navigation>
+      </q-step>
+
+      <q-step
+        :name="3"
+        title="Courses and Certifications"
+        icon="assignment"
+        :done="step > 3"
+      >
+        <q-stepper-navigation>
+          <q-btn @click="step = 4" color="primary" label="Continue" />
+          <q-btn flat @click="step = 2" color="primary" label="Back" class="q-ml-sm" />
+        </q-stepper-navigation>
+      </q-step>
+
+      <q-step
+        :name="4"
+        title="Working Experience"
+        icon="assignment"
+        :done="step > 4"
+      >
+        <q-stepper-navigation>
+          <q-btn @click="step = 5" color="primary" label="Continue" />
+          <q-btn flat @click="step = 3" color="primary" label="Back" class="q-ml-sm" />
+        </q-stepper-navigation>
+      </q-step>
+
+      <q-step
+        :name="5"
+        title="Core Skills"
+        icon="assignment"
+        :done="step > 5"
+      >
+        <q-stepper-navigation>
+          <q-btn @click="step = 6" color="primary" label="Continue" />
+          <q-btn flat @click="step = 4" color="primary" label="Back" class="q-ml-sm" />
+        </q-stepper-navigation>
+      </q-step>
+
+      <q-step
+        :name="6"
+        title="Why Do You Want To Join Our Company and How Will You Make a Difference"
+        icon="assignment"
+        :done="step > 6"
+      >
+        <q-stepper-navigation>
+          <q-btn @click="step = 7" color="primary" label="Continue" />
+          <q-btn flat @click="step = 5" color="primary" label="Back" class="q-ml-sm" />
+        </q-stepper-navigation>
+      </q-step>
+
+      <q-step
+        :name="7"
+        title="General Inquiry"
+        icon="assignment"
+        :done="step > 7"
+      >
+        <q-stepper-navigation>
+          <q-btn @click="step = 8" color="primary" label="Continue" />
+          <q-btn flat @click="step = 6" color="primary" label="Back" class="q-ml-sm" />
+        </q-stepper-navigation>
+      </q-step>
+
+      <q-step
+        :name="8"
+        title="Reference"
+        icon="add_comment"
+      >
+
+        <q-stepper-navigation>
+          <q-btn color="primary" label="Finish" />
+          <q-btn flat @click="step = 7" color="primary" label="Back" class="q-ml-sm" />
+        </q-stepper-navigation>
+      </q-step>
+    </q-stepper>
   </div>
 </template>
 
+<style>
+</style>
+
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  data () {
+    return {
+      step: 1,
+      name: null,
+      age: null,
+
+      accept: false
+    }
+  },
+
+  methods: {
+    onSubmit () {
+      this.$refs.name.validate()
+      this.$refs.age.validate()
+
+      if (this.$refs.name.hasError || this.$refs.age.hasError) {
+        this.formHasError = true
+      }
+      else if (this.accept !== true) {
+        this.$q.notify({
+          color: 'negative',
+          message: 'You need to accept the license and terms first'
+        })
+      }
+      else {
+        this.$q.notify({
+          icon: 'done',
+          color: 'positive',
+          message: 'Submitted'
+        })
+      }
+    },
+
+    onReset () {
+      this.name = null
+      this.age = null
+
+      this.$refs.name.resetValidation()
+      this.$refs.age.resetValidation()
+    }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
