@@ -9,7 +9,7 @@
       <q-step
         :name="1"
         title="Personal Information"
-        icon="form"
+        icon="assignment"
         :done="step > 1"
       >
       
@@ -17,10 +17,16 @@
         ref="name"
         filled
         v-model="name"
-        label="Your name"
+        label="Full Name"
         lazy-rules
         :rules="[ val => val && val.length > 0 || 'Please type something']"
       />
+
+      <q-input
+        v-model= "date"
+        filled type ="date"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"/>
 
       <q-input
         ref="phone"
@@ -42,15 +48,13 @@
       />
 
       <q-input
-        ref="address"
-        filled
-        v-model="address"
-        label="Your Address"
-        lazy-rules
+      v-model="text"
+      filled
+      type="textarea"
+      label="Address"
+      lazy-rules
         :rules="[ val => val && val.length > 0 || 'Please type something']"
       />
-
-      <q-toggle v-model="accept" label="I accept the license and terms" />
 
       <div>
         <q-btn label="Submit" type="submit" color="primary" />
@@ -66,9 +70,54 @@
         :name="2"
         title="Educational Background"
         caption="Optional"
-        icon="create_new_folder"
+        icon="assignment"
         :done="step > 2"
       >
+      <div class="q-gutter-md row items-start">
+        <q-input
+          v-model= "text"
+          filled type= "text"
+          hint="School/University"
+          lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+        />
+
+        <q-input
+        v-model= "text"
+        filled type="text"
+        hint="Major"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+        />
+
+        <q-input
+        v-model="years"
+        filled type="years"
+        hint="From"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+        />
+
+        <q-input
+        v-model="years"
+        filled type="years"
+        hint="To"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"/>
+
+        <q-input
+        v-model="gpa"
+        filled type="gpa"
+        hint="GPA"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"/>
+
+        <div>
+        <q-btn label="Submit" type="submit" color="primary" />
+        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+        </div>
+      
+      </div>
         <q-stepper-navigation>
           <q-btn @click="step = 3" color="primary" label="Continue" />
           <q-btn flat @click="step = 1" color="primary" label="Back" class="q-ml-sm" />
@@ -81,6 +130,44 @@
         icon="assignment"
         :done="step > 3"
       >
+
+      <div class="q-gutter-md row items-start">
+        <q-input
+          v-model= "text"
+          filled type= "text"
+          hint="Course and Certificates Name"
+          lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+        />
+
+        <q-input
+        v-model= "text"
+        filled type="text"
+        hint="Organizer"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+        />
+
+        <q-input
+        v-model="years"
+        filled type="years"
+        hint="From"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+        />
+
+        <q-input
+        v-model="years"
+        filled type="years"
+        hint="To"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"/>
+
+        <div>
+        <q-btn label="Submit" type="submit" color="primary" />
+        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+        </div>
+      </div>
         <q-stepper-navigation>
           <q-btn @click="step = 4" color="primary" label="Continue" />
           <q-btn flat @click="step = 2" color="primary" label="Back" class="q-ml-sm" />
@@ -138,7 +225,7 @@
       <q-step
         :name="8"
         title="Reference"
-        icon="add_comment"
+        icon="assignment"
       >
 
         <q-stepper-navigation>
